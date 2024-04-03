@@ -1,0 +1,40 @@
+.sticky-header {
+  position: sticky;
+  top: 0; /* Ensures the header sticks to the top of the viewport */
+  /* Add other styles for your header, like background color, padding, etc. */
+  background-color: cadetblue;
+  color: #dcf8c6;
+  /* align-content: center; */
+  text-align: center;
+  font-size: x-large;
+  padding: 0%;
+}
+.start-from-bottom {
+  display: flex;
+  flex-direction: column-reverse; /* Messages will stack from bottom to top */
+  gap: 10px; /* Space between messages */
+  max-height: 700px; /* Adjust as needed */
+  overflow-y: auto; /* Enable scrolling when messages exceed container height */
+  padding: 10px;
+}
+
+.loading-indicator {
+  align-self: center;
+  font-size: 16px;
+  color: #555;
+  margin: 20px 0;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

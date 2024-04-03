@@ -1,0 +1,43 @@
+.contacts-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  .contacts-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+  }
+  
+  .contact-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ccc; /* Placeholder color for avatar */
+    margin-right: 10px;
+  }
+  
+  .contact-info {
+    flex-grow: 1;
+  }
+  
+  .contact-name {
+    font-weight: bold;
+  }
+  
+  .contact-date {
+    font-size: 12px;
+    color: #888;
+  }
+  
