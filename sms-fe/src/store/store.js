@@ -1,9 +1,20 @@
+// store.js
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './reducers/counterReducer'; // Replace with your actual reducer
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import myReducer from './reducers/myReducer';
 
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, myReducer);
+
 const store = configureStore({
-  reducer: myReducer,
+  reducer: persistedReducer,
 });
 
-export default store;
+const persistor = persistStore(store);
+
+export { store, persistor };
