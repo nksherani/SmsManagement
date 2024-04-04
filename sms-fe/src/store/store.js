@@ -7,6 +7,7 @@ import myReducer from "./reducers/myReducer";
 const persistConfig = {
   key: "root",
   storage,
+  whitelist: ["selectedContact"],
 };
 
 const persistedReducer = persistReducer(persistConfig, myReducer);

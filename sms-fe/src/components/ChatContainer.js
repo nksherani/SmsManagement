@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./css/ChatContainer.css"; // Import CSS file for styling
-import Message from "./Message";
 import SearchComponent from "./SearchComponent";
 import Messages from "./Messages";
+import ContactHeader from "./ContactHeader";
 
 const ChatContainer = () => {
   const [messages, setMessages] = useState([]);
@@ -66,28 +66,21 @@ const ChatContainer = () => {
   };
 
   const selectedContact = useSelector((state) => state.selectedContact);
+  const isSearching = useSelector((state) => state.isSearching);
 
   return (
     <>
-    <SearchComponent phoneNumber={cleansedNumber} />
-      <div className="sticky-header">
-        
-        {selectedContact ? (
-          <p>
-            {selectedContact.contactName}
-            <br />
-            {selectedContact.number}
-          </p>
-        ) : (
-          <p>Object not yet available</p>
-        )}
-      </div>
-
-      <Messages
-        messages={messages}
-        hasMore={hasMore}
-        forwardedRef={buttonRef}
-      />
+      <SearchComponent phoneNumber={cleansedNumber} />
+      {!isSearching && (
+        <>
+          <ContactHeader selectedContact={selectedContact} />
+          <Messages
+            messages={messages}
+            hasMore={hasMore}
+            forwardedRef={buttonRef}
+          />
+        </>
+      )}
     </>
   );
 };

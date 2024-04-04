@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import "./css/Contacts.css"; // Import CSS file for styling
 
@@ -23,9 +23,9 @@ const Contacts = () => {
     }
   };
   const handleClick = (contact) => {
-    dispatch({ type: 'SELECT_CONTACT', payload: contact });
+    dispatch({ type: "SELECT_CONTACT", payload: contact });
     // Handle click to open messages for the selected contact
-    console.log('Open messages for:', contact);
+    console.log("Open messages for:", contact);
     navigate(`/messages/${contact.number}`);
   };
 
@@ -33,12 +33,18 @@ const Contacts = () => {
     <div className="contacts-container">
       <h1>Contact List</h1>
       <ul className="contacts-list">
-        {contacts.map((contact) => (
-          <li key={contact.number} className="contact-item" onClick={() => handleClick(contact)}>
+        {contacts.map((contact, idx) => (
+          <li
+            key={idx}
+            className="contact-item"
+            onClick={() => handleClick(contact)}
+          >
             <div className="contact-avatar"></div>
             <div className="contact-info">
               <p className="contact-name">{contact.contactName}</p>
-              <p className="contact-date">{new Date(contact.recentDate).toLocaleDateString()}</p>
+              <p className="contact-date">
+                {new Date(contact.recentDate).toLocaleDateString()}
+              </p>
             </div>
           </li>
         ))}
