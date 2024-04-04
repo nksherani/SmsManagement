@@ -6,8 +6,8 @@ const Messages = (props) => {
   const { messages, hasMore, forwardedRef } = props;
   return (
     <div className="start-from-bottom">
-      {messages.map((message) => (
-        <Message message={message} />
+      {messages.map((message, idx) => (
+        <Message key={idx} message={message} />
       ))}
       {hasMore && <p ref={forwardedRef}></p>}
     </div>
