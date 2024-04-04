@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
+
 import SearchResults from "./SearchResults";
 
 import "./css/SearchComponent.css"; // Make sure you have this CSS file
@@ -7,9 +9,12 @@ const SearchComponent = (props) => {
   const [expanded, setExpanded] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const dispatch = useDispatch();
+
   const { phoneNumber } = props;
   const handleSearchIconClick = () => {
     setExpanded(true);
+    dispatch({ type: 'IS_SEARCHING', payload: true });
   };
 
   const handleInputChange = (e) => {
@@ -17,6 +22,8 @@ const SearchComponent = (props) => {
     setSearchText(inputText);
     if (inputText === "") {
       setExpanded(false);
+      dispatch({ type: 'IS_SEARCHING', payload: false });
+
     }
 
     // Mocking search results using setTimeout
